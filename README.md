@@ -38,7 +38,7 @@ It boasts a lightweight design, stunning aesthetics, and robust functionality, m
 Define methods like SubmitStep1, SubmitStep2, etc., in your code-behind file or Razor component to handle form submissions at each step.
 
 > [!IMPORTANT]
->- According to the WizardContainer page :  @rendermode InteractiveServer !! important (.Net 8)
+>- According to the WizardContainer page render mode should set to InteractiveServer:  @rendermode InteractiveServer (.Net 8)
 
 **Explanation:**
 
