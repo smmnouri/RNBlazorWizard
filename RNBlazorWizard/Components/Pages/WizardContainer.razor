@@ -1,0 +1,49 @@
+﻿@page "/WizardContainer/"
+@using RNBlazorWizard.Components.Wizard
+@using RNBlazorWizard.Components.Tabs
+@rendermode InteractiveServer
+<h3>WizardContainer</h3>
+<Wizard>
+	<WizardStep Title="General Info" Submit="@SubmitStep1">
+		<Step1 @ref="@step1"></Step1>
+	</WizardStep>
+	<WizardStep Title="Personal Info" Submit="@SubmitStep2">
+		<Step2 @ref="@step2"></Step2>
+	</WizardStep>
+	<WizardStep Title="Bank Info" Submit="@SubmitStep3">
+		<Step3 @ref="@step3"></Step3>
+	</WizardStep>
+	<WizardStep Title="Confirmation" Submit="@SubmitStep4">
+		<Step4 @ref="@step4"></Step4>
+	</WizardStep>
+</Wizard>
+
+@code {
+	private Step1 step1 { get; set; }
+	private Step2 step2 { get; set; }
+	private Step3 step3 { get; set; }
+	private Step4 step4 { get; set; }
+	async Task<bool> SubmitStep1()
+	{
+		var submitResult = await step1.Submit();
+		return submitResult;
+	}
+	async Task<bool> SubmitStep2()
+	{
+		var submitResult = await step2.Submit();
+		return submitResult;
+	}
+	async Task<bool> SubmitStep3()
+	{
+		var submitResult = await step3.Submit();
+		//if the result is not true i would like to show a alert message
+		if (!submitResult)
+			await gJs.InvokeVoidAsync("alert", "The page is not valid!");
+		return submitResult;
+	}
+	async Task<bool> SubmitStep4()
+	{
+		var submitResult = await step4.Submit();
+		return submitResult;
+	}
+}

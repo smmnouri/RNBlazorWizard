@@ -1,0 +1,48 @@
+﻿<CascadingValue Value="this">
+@if (Parent.ActiveStep == this)
+{
+    <div id="step-@(Parent.StepsIndex(this) + 1)">
+            @ChildContent
+    </div>
+}
+</CascadingValue>
+@code {
+    /// <summary>
+    /// The <see cref="Wizard"/> container
+    /// </summary>
+    [CascadingParameter]
+    protected internal Wizard Parent { get; set; }
+
+    /// <summary>
+    /// The Child Content of the current <see cref="WizardStep"/>
+    /// </summary>
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    /// <summary>
+    /// The title of the step
+    /// </summary>
+    [Parameter]
+    public string Title { get; set; }
+    /// <summary>
+    /// The title of the step
+    /// </summary>
+    [Parameter]
+    public bool? DisplayFooter { get; set; }
+
+    [Parameter]
+    public string Name { get; set; }
+    [Parameter]
+    public Func<Task<bool>> Submit { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        DisplayFooter = DisplayFooter == null ? true : DisplayFooter;
+        await Parent.AddStepAsync(this);
+    }
+
+    
+    public bool IsSubmited { get; set; }
+    
+    public bool IsValid { get; set; }
+    
+}
