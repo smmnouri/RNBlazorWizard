@@ -48,7 +48,9 @@ Define methods like SubmitStep1, SubmitStep2, etc., in your code-behind file or 
 - The `Submit` event handler is bound to a method that handles form submission or any actions specific to that step.
 - You can reference child components within each WizardStep to create the content for each step. In this example, Step1, Step2, etc., are assumed to be your custom components that render the step content.
 - By providing references (using `@ref="@step1"`) to these child components, you can potentially access their state or properties within your submit methods.
-- 
+
+  ## License
+  > The project is under [MIT license](https://opensource.org/licenses/MIT).
 > [!NOTE]
-> __I am always striving to make RNBlazorWizard even better! Feel free to contact me for any suggestions or improvements you might have. I appreciate your feedback and contributions.__
+> __I am always striving to make RNBlazorWizard even better! Feel free to contact me for any suggestions or improvements you might have. I appreciate your feedback and contributions.Please let me know by creating an Issue or Pull Request.__
 
